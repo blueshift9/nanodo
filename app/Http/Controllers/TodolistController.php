@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todolist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodolistController extends Controller
 {
@@ -36,7 +37,19 @@ class TodolistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:todolists|max:255',
+            'description' => 'required',
+        ]);
+        $list = Todolist::create($request->all());
+        dd($list);
+
+        $list->users->save(Auth::user()->id);
+
+
+        //$request->session()->flash('status', 'List created successfully.');
+
+        //return back()->with('success','Item created successfully!');
     }
 
     /**

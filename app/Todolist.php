@@ -14,4 +14,9 @@ class Todolist extends Model
     protected $fillable = [
         'todolist_id', 'user_id',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany("App\User");
+    }
 }
