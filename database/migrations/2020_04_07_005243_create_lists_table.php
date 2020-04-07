@@ -13,7 +13,7 @@ class CreateListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('todolists', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->text('description');
@@ -21,11 +21,11 @@ class CreateListsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('lists_users', function (Blueprint $table) {
+        Schema::create('todolist_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('list_id')->unsigned();
+            $table->integer('todolist_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->unique(['list_id', 'user_id']);
+            $table->unique(['todolist_id', 'user_id']);
             $table->timestamps();
         });
     }
@@ -37,7 +37,7 @@ class CreateListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lists');
-        Schema::dropIfExists('lists_users');
+        Schema::dropIfExists('todolists');
+        Schema::dropIfExists('todolist_user');
     }
 }
