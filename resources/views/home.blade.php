@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex items-center">
-        <div class="md:w-1/2 md:mx-auto">
+        <div class="w-full mx-auto p-10 lg:w-1/3">
 
             @if (session('status'))
                 <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
