@@ -16,13 +16,12 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/1a954aa436.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
 
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app" class="flex flex-col">
         @if(Route::has('login'))
-
-            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
 
             <nav x-data="{ open: true }" class="bg-gray-800">
                 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -114,7 +113,12 @@
 
         @endif
 
+        <!-- Need to move the opening tags for each page here -->
+
         @yield('content')
+
+        <!-- Need to move the closing tags for each page here -->
+
     </div>
 </body>
 </html>
