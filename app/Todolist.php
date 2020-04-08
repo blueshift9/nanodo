@@ -12,7 +12,7 @@ class Todolist extends Model
      * @var array
      */
     protected $fillable = [
-        'todolist_id', 'user_id',
+        'name', 'description', 'display_order'
     ];
 
     public function users()

@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
+Route::resource('todolist', 'TodolistController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('todolist', 'TodolistController');
 

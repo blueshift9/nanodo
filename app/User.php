@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function lists()
     {
-        return $this->belongsToMany("App\Todolist");
+        return $this->belongsToMany("App\Todolist", 'todolist_user');
     }
 }

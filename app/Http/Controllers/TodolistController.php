@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Todolist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class TodolistController extends Controller
 {
@@ -26,30 +28,37 @@ class TodolistController extends Controller
      */
     public function create()
     {
-        return view('todolist.create');
+        $max = DB::table('todolists')->max('display_order');
+        $max++;
+        return view('todolist.create')->with('order', $max);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:todolists|max:255',
+            'name' => 'required|max:255',
             'description' => 'required',
+            'display_order' => 'required',
         ]);
-        $list = Todolist::create($request->all());
-        dd($list);
 
-        $list->users->save(Auth::user()->id);
+        $list = Todolist::create($request->all());
+        DB::table('todolist_user')->insert(
+            ['user_id' => Auth::user()->id, 'todolist_id' => $list->id]
+        );
+
+        $list->save();
 
 
         //$request->session()->flash('status', 'List created successfully.');
 
         //return back()->with('success','Item created successfully!');
+        return Redirect::home();
     }
 
     /**
@@ -71,7 +80,7 @@ class TodolistController extends Controller
      */
     public function edit(Todolist $todolist)
     {
-        //
+        return view('todolist.edit');
     }
 
     /**
