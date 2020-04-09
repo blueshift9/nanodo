@@ -15,9 +15,12 @@
 
         <div class="w-full p-6">
             <ul id="items" class="">
-                <li class="sort-handle">item 1</li>
+                {{--<li class="sort-handle">item 1</li>
                 <li class="sort-handle">item 2</li>
-                <li class="sort-handle">item 3</li>
+                <li class="sort-handle">item 3</li>--}}
+                @foreach($list->listitems as $listitem)
+                    <li class="sort-handle" data-id="{{ $listitem->display_order }}">{{ $listitem->body }}</li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -31,6 +34,11 @@
             margin: 10px 0;
         }
     </style>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
     <script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Listitem;
 use App\Todolist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

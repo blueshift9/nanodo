@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::resource('todolist', 'TodolistController');
+Route::resource('listitem', 'ListitemController');
+Route::post('listitem/changeorder', 'ListitemController@changeorder');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

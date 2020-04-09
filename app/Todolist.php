@@ -19,4 +19,9 @@ class Todolist extends Model
     {
         return $this->belongsToMany("App\User");
     }
+
+    public function listitems()
+    {
+        return $this->hasMany("App\ListItem");
+    }
 }
