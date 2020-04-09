@@ -19,7 +19,7 @@
                 <li class="sort-handle">item 2</li>
                 <li class="sort-handle">item 3</li>--}}
                 @foreach($list->listitems as $listitem)
-                    <li class="sort-handle" data-id="{{ $listitem->display_order }}">{{ $listitem->body }}</li>
+                    <li class="sort-handle" data-id="{{ $listitem->id }}">{{ $listitem->body }}</li>
                 @endforeach
             </ul>
         </div>
@@ -49,7 +49,28 @@
                 dragClass: "sortable-drag",  // Class name for the dragging item
                 animation: 150,  // ms, animation speed moving items when sorting, `0` — without animation
                 handle: ".sort-handle",  // Drag handle selector within list items
+                onUpdate: function (evt) {
+                    arr = [];
+                    $( ".sort-handle" ).each(function( index ) {
+                        arr.push($( this ).data('id'));
+                    });
+                    // same properties as onEnd
+                    $.ajax({
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 
+                        url: "{{ url('listitem/changeorder') }}",
+                        type: 'post',
+                        data: {
+                            order: arr
+                        },
+                        success: function (result) {
+                            window.location.reload();
+                        },
+                        complete: function () {
+
+                        }
+                    });
+                },
             });
     </script>
 @endpush

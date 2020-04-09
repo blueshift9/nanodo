@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;

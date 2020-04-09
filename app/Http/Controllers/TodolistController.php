@@ -68,8 +68,9 @@ class TodolistController extends Controller
      * @param  \App\Todolist  $todolist
      * @return \Illuminate\Http\Response
      */
-    public function show(Todolist $todolist)
+    public function show($id)
     {
+        $todolist = Todolist::query()->where('id', $id)->with('listitems')->first();
         return view('todolist.show')->with('list', $todolist);
     }
 

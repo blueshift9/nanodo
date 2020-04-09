@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class ListItemController extends Controller
 {
-
+    public function changeorder(Request $request)
+    {
+        $order = $request->order;
+        Listitem::setNewOrder($order);
+    }
 }

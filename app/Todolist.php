@@ -22,6 +22,6 @@ class Todolist extends Model
 
     public function listitems()
     {
-        return $this->hasMany("App\ListItem");
+        return $this->hasMany("App\ListItem")->orderBy('display_order');
     }
 }
