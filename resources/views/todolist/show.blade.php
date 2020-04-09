@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mb-5">
-        <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
+    <div class="flex flex-col break-words bg-white border border-2 shadow-md mb-5">
+        <div class="font-semibold bg-gray-800 text-gray-300 py-3 px-6 mb-0">
             {{ $list->name }}
         </div>
 
@@ -34,10 +34,7 @@
             margin: 10px 0;
         }
     </style>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
@@ -64,13 +61,14 @@
                             order: arr
                         },
                         success: function (result) {
-                            window.location.reload();
+                            //window.location.reload();
+                            toastr.success('Order updated.')
                         },
                         complete: function () {
-
                         }
                     });
                 },
             });
+
     </script>
 @endpush

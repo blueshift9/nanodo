@@ -10,7 +10,7 @@
     </div>
 
     @forelse($user->lists as $list)
-        <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mb-5">
+        <div class="flex flex-col break-words bg-white border border-2 shadow-md mb-5">
             <div class="font-semibold bg-gray-800 text-gray-300 py-3 px-6 mb-0">
                 {{ $list->name }}
             </div>
