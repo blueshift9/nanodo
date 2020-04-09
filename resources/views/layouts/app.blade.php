@@ -35,10 +35,10 @@
                             </button>
                         </div>
                         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                            <div class="flex-shrink-0">
+                            {{--<div class="flex-shrink-0">test
                                 <img class="block lg:hidden h-8 w-auto" src="/img/logos/workflow-mark-on-dark.svg" alt="" />
                                 <img class="hidden lg:block h-8 w-auto" src="/img/logos/workflow-logo-on-dark.svg" alt="" />
-                            </div>
+                            </div>--}}
                             <div class="hidden sm:block sm:ml-6">
                                 <div class="flex">
                                     {{--
