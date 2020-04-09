@@ -127,5 +127,7 @@
         <!-- Need to move the closing tags for each page here -->
 
     </div>
+    @stack('scripts')
+
 </body>
 </html>

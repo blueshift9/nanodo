@@ -12,6 +12,36 @@
                 {{ $list->description }}
             </p>
         </div>
+
+        <div class="w-full p-6">
+            <ul id="items" class="">
+                <li class="sort-handle">item 1</li>
+                <li class="sort-handle">item 2</li>
+                <li class="sort-handle">item 3</li>
+            </ul>
+        </div>
     </div>
 
 @endsection
+
+@push('scripts')
+    <style>
+        .sort-handle {
+            cursor: move;
+            margin: 10px 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <script>
+            var el = document.getElementById('items');
+            var sortable = Sortable.create(el, {
+                ghostClass: "sortable-ghost",  // Class name for the drop placeholder
+                chosenClass: "sortable-chosen",  // Class name for the chosen item
+                dragClass: "sortable-drag",  // Class name for the dragging item
+                animation: 150,  // ms, animation speed moving items when sorting, `0` — without animation
+                handle: ".sort-handle",  // Drag handle selector within list items
+
+            });
+    </script>
+@endpush
