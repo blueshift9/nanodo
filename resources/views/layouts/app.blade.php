@@ -114,9 +114,16 @@
         @endif
 
         <!-- Need to move the opening tags for each page here -->
-
-        @yield('content')
-
+        <div class="flex items-center">
+            <div class="w-full mx-auto p-10 lg:w-1/3">
+                @if (session('status'))
+                    <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @yield('content')
+            </div>
+        </div>
         <!-- Need to move the closing tags for each page here -->
 
     </div>
