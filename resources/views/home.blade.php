@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="flex flex-col mx-0 my-4 w-full items-center">
+    <div class="flex flex-col mx-0 mb-4 w-full items-center">
         <button class="bg-gray-800 hover:bg-blue-800 text-gray-300 font-bold py-2 px-4 rounded inline-flex items-center">
             <i class="fas fa-plus-square"></i>
             <a href="/todolist/create"><span>&nbsp;Create New List</span></a>
