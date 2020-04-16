@@ -19,7 +19,7 @@
                 <li class="sort-handle">item 2</li>
                 <li class="sort-handle">item 3</li>--}}
                 @foreach($list->listitems as $listitem)
-                    <li class="sort-handle" data-id="{{ $listitem->id }}">{{ $listitem->body }}</li>
+                    <li class="sort-handle py-4 px-2 bg-gray-800 text-gray-300 font-semibold" data-id="{{ $listitem->id }}">{{ $listitem->body }} <i class="fas fa-times-circle float-right hover:text-red-600 hover:cursor-pointer"></i></li>
                 @endforeach
             </ul>
         </div>
@@ -68,6 +68,23 @@
                         }
                     });
                 },
+            });
+
+            $('.sort-handle').on( "click", function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+                    url: "{{ url('listitem') }}/" + id,
+                    type: 'delete',
+                    error: function(result) {
+
+                    },
+                    success: function (result) {
+                        toastr.success(result);
+                        $(".sort-handle[data-id='" + id +"']").fadeOut(1000);
+                    },
+                });
             });
 
     </script>
