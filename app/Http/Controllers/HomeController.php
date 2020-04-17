@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Todolist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = \App\User::find(Auth::user()->id);
-        return view('home')->with('user', $user);
+        $max = Todolist::max('display_order') + 1;
+        return view('home')->with('user', $user)->with('order', $max);
     }
 }
