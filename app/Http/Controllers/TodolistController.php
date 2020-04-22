@@ -105,6 +105,9 @@ class TodolistController extends Controller
      */
     public function destroy(Todolist $todolist)
     {
-        //
+        \App\Todolist::destroy($todolist->id);
+
+        return response('List deleted!', 200);
     }
+
 }

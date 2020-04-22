@@ -20,7 +20,7 @@
     </div>
 
     @forelse($user->lists as $list)
-        <div class="flex flex-col break-words bg-white border border-2 shadow-md mb-5">
+        <div class="flex flex-col break-words bg-white border border-2 shadow-md mb-5 todolist-box" data-id="{{ $list->id }}">
             <div class="font-semibold bg-gray-800 text-gray-300 py-3 px-6 mb-0">
                 {{ $list->name }}
             </div>
@@ -39,6 +39,10 @@
                 <button class="bg-gray-800 hover:bg-blue-800 text-gray-300 font-bold py-2 px-4 rounded inline-flex items-center">
                     <i class="fas fa-plus-square"></i>
                     <span>&nbsp;Add to List</span>
+                </button>
+                <button class="bg-red-800 hover:bg-red-600 text-gray-300 font-bold py-2 px-4 rounded inline-flex items-center delete-list" data-id="{{ $list->id }}">
+                    <i class="fas fa-trash"></i>
+                    <span>&nbsp;Delete</span>
                 </button>
             </div>
         </div>
@@ -131,6 +135,23 @@
             modal.classList.toggle('pointer-events-none')
             body.classList.toggle('modal-active')
         }
+
+        $('.delete-list').on( "click", function() {
+            var id = $(this).data('id');
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+                url: "{{ url('todolist') }}/" + id,
+                type: 'delete',
+                error: function(result) {
+
+                },
+                success: function (result) {
+                    toastr.success(result);
+                    $(".todolist-box[data-id='" + id +"']").fadeOut(1000);
+                },
+            });
+        });
 
 
     </script>
