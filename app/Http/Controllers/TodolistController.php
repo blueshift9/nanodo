@@ -105,7 +105,10 @@ class TodolistController extends Controller
      */
     public function destroy(Todolist $todolist)
     {
-        \App\Todolist::destroy($todolist->id);
+
+        DB::delete('DELETE FROM todolist_user WHERE todolist_id = ?', [$todolist->id]);
+        $todolist->listitems()->delete();
+        $todolist->delete();
 
         return response('List deleted!', 200);
     }
